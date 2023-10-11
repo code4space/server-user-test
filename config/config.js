@@ -3,7 +3,8 @@ require('../model/user');
 
 const mongoose = require('mongoose');
 
-const mongoURI = 'mongodb://localhost:27017/admin_app' ;
+const mongoURI = process.env.MONGODB_URI + dbName;
+
 
 async function connectToDatabase() {
     try {
