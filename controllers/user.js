@@ -88,7 +88,6 @@ class User {
             const totalPages = Math.ceil(allDataAbsen / perPage);
             res.status(200).json({ userInfo: { name, email, phone, image, position, id: _id }, absen: todayAbsent, totalPages })
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -168,7 +167,6 @@ class User {
 
             res.status(201).json({ imagePath: result.image })
         } catch (error) {
-            console.log(error)
             next(error)
         }
     }

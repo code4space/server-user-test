@@ -55,7 +55,6 @@ class Admin {
             const startDate = query?.from ? currentDate(query.from) : currentDate();
             const endDate = query?.from ? nextMonth(query.to) : nextMonth();
 
-            console.log(startDate, endDate)
             const user = await Users.find({ admin: false }, "-password -__v")
             const todayAbsent = await Absents.find({
                 tgl_masuk: {
@@ -82,7 +81,6 @@ class Admin {
 
             let { email, password, name, phone, position, id } = req.body
             if (email?.length === 0) throw handleError('Bad Request', 'email is required!')
-            console.log(id, email, password, name, phone, position)
             const set = {}
             if (password?.length > 0) {
                 set.password = hashPassword(password)
@@ -101,7 +99,6 @@ class Admin {
 
             res.status(201).json({ imagePath: result.image })
         } catch (error) {
-            console.log(error)
             next(error)
         }
     }
