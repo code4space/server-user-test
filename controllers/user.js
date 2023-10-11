@@ -94,7 +94,7 @@ class User {
 
     static async absenMasuk(req, res, next) {
         try {
-            const today = new Date('2023-10-06')
+            const today = new Date()
             const todayAbsent = await Absents.findOne({ user: req.user.id }, null, { sort: { tgl_masuk: -1 } });
             if (!todayAbsent) {
                 await Absents.create({
@@ -129,7 +129,7 @@ class User {
 
     static async absenPulang(req, res, next) {
         try {
-            const today = new Date('2023-10-06')
+            const today = new Date()
             const todayAbsent = await Absents.findOne({ user: req.user.id }, null, { sort: { tgl_masuk: -1 } });
 
             if (!todayAbsent) return res.status(200).json({ message: "User must 'Absen Masuk' first!" })
